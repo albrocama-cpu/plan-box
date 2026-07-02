@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Plan Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <p class="eyebrow">Your archive of plans</p>
+  <h1>The Plan Box</h1>
+  <p class="subhead">When you don't know what to do, pull from the box.</p>
+</header>
+
+<main>
+
+  <section class="drawer" id="drawer">
+    <div class="card-stack" id="cardStack" aria-live="polite">
+      <div class="index-card placeholder" id="placeholderCard">
+        <span class="card-tab">?</span>
+        <p class="card-empty-msg">No plans saved yet.<br>Add the first one below.</p>
+      </div>
+    </div>
+    <button class="surprise-btn" id="surpriseBtn">Surprise us</button>
+  </section>
+
+  <section class="filters" aria-label="Filter plans">
+    <div class="chip-group" id="chipCategory" data-target="category">
+      <button type="button" class="chip" data-value="Dinner">🍽️ Dinner</button>
+      <button type="button" class="chip" data-value="Adventure">🌲 Adventure</button>
+      <button type="button" class="chip" data-value="Culture">🎭 Culture</button>
+      <button type="button" class="chip" data-value="Chill">🛋️ Chill</button>
+      <button type="button" class="chip" data-value="Getaway">🧳 Getaway</button>
+    </div>
+    <div class="chip-group" id="chipBudget" data-target="budget">
+      <button type="button" class="chip" data-value="Free">Free</button>
+      <button type="button" class="chip" data-value="Low">€</button>
+      <button type="button" class="chip" data-value="Medium">€€</button>
+      <button type="button" class="chip" data-value="High">€€€</button>
+    </div>
+    <div class="chip-group" id="chipLugar" data-target="lugar">
+      <button type="button" class="chip" data-value="Indoor">🏠 Indoor</button>
+      <button type="button" class="chip" data-value="Outdoor">🌤️ Outdoor</button>
+      <button type="button" class="chip" data-value="Either">Either</button>
+    </div>
+  </section>
+
+  <section class="list-section">
+    <h2>All plans <span id="countBadge">(0)</span></h2>
+    <div class="idea-grid" id="ideaGrid"></div>
+  </section>
+
+  <section class="add-section">
+    <h2>Add a new plan</h2>
+    <form id="addForm">
+      <div class="field-row">
+        <label>Title
+          <input type="text" id="title" required placeholder="Rooftop dinner at...">
+        </label>
+        <label>Who's adding this?
+          <input type="text" id="addedBy" required placeholder="Your name" list="nameSuggestions">
+          <datalist id="nameSuggestions"></datalist>
+        </label>
+      </div>
+      <div class="field-row">
+        <label>Category
+          <select id="category" required>
+            <option value="Dinner">Dinner</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Culture">Culture</option>
+            <option value="Chill">Chill</option>
+            <option value="Getaway">Getaway</option>
+          </select>
+        </label>
+        <label>Budget
+          <select id="budget" required>
+            <option value="Free">Free</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
+        <label>Place
+          <select id="lugar" required>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Either">Either</option>
+          </select>
+        </label>
+      </div>
+      <label>Notes (optional)
+        <textarea id="notes" rows="2" placeholder="Book ahead, bring a jacket..."></textarea>
+      </label>
+      <button type="submit">Save to the box</button>
+      <p class="form-status" id="formStatus"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Made by hand, stored in the cloud, ready whenever you need it.</p>
+</footer>
+
+<!-- Firebase (compat SDK — no build step needed) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
