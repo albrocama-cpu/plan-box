@@ -28,7 +28,7 @@ db.collection('dateIdeas').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
   renderGrid();
 }, err => {
   document.getElementById('formStatus').textContent =
-    'Couldn't connect to the database. Check firebase-config.js.';
+    "Couldn't connect to the database. Check firebase-config.js.";
   console.error(err);
 });
 
@@ -118,7 +118,7 @@ document.getElementById('addForm').addEventListener('submit', async (e) => {
     e.target.reset();
     setTimeout(() => status.textContent = '', 2500);
   }catch(err){
-    status.textContent = 'Couldn't save. Check your Firestore connection.';
+    status.textContent = "Couldn't save. Check your Firestore connection.";
     console.error(err);
   }
 });
